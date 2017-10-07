@@ -1,5 +1,6 @@
 import re
 from django.db import models
+from django.urls import reverse
 
 
 class PreworkVideo(models.Model):
@@ -11,7 +12,7 @@ class PreworkVideo(models.Model):
     )
 
     title = models.CharField(max_length=100)
-    created = models.DateField(auto_now_add=True)
+    created = models.DateField('Date created', auto_now_add=True)
     subject = models.CharField(max_length=4, choices=CLASS_CHOICES)
     video_link = models.CharField(max_length=100)
 
@@ -19,7 +20,7 @@ class PreworkVideo(models.Model):
     class_num = models.SmallIntegerField()
     video_num = models.SmallIntegerField(default=1)
 
-    slug = models.SlugField()
+    slug = models.SlugField(db_index=True, unique=True)
 
     notes = models.TextField(blank=True)
 
@@ -38,3 +39,11 @@ class PreworkVideo(models.Model):
     @property
     def embed_link(self):
         return f"https://drive.google.com/file/d/{self.video_id}/preview"
+
+    @property
+    def full_video_id(self):
+        return f"{self.class_num}-{self.video_num}"
+    full_video_id.fget.short_description = 'Class and Video Number'
+
+    def get_absolute_url(self):
+        return reverse('videos:show_video', args=[self.subject, self.slug])
