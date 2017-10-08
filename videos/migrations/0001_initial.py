@@ -24,5 +24,6 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(unique=True)),
                 ('notes', models.TextField(blank=True)),
             ],
+            options={'ordering': ['-created']},
         ),
     ]

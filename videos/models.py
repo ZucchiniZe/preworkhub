@@ -47,3 +47,7 @@ class PreworkVideo(models.Model):
 
     def get_absolute_url(self):
         return reverse('videos:show_video', args=[self.subject, self.slug])
+
+    class Meta:
+        ordering = ['-created']
+        get_latest_by = 'created'
