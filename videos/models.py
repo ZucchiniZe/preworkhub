@@ -13,14 +13,14 @@ class PreworkVideo(models.Model):
 
     title = models.CharField(max_length=100)
     created = models.DateField('Date created', auto_now_add=True)
-    subject = models.CharField(max_length=4, choices=CLASS_CHOICES)
+    subject = models.CharField(db_index=True, max_length=4, choices=CLASS_CHOICES)
     video_link = models.CharField(max_length=100)
 
     # These are SmallIntegerFields because we aren't going to be having class numbers above 32767
     class_num = models.SmallIntegerField()
     video_num = models.SmallIntegerField(default=1)
 
-    slug = models.SlugField(db_index=True, unique=True)
+    slug = models.SlugField(unique=True)
 
     notes = models.TextField(blank=True)
 
