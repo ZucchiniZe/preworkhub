@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Prework Videos{% endblock %}
+
+{% block content %}
+    <h1>Prework Videos</h1>
+    <h2><a href="{% url 'videos:list_videos' 'calc' %}">Calculus</a></h2>
+    <h2><a href="{% url 'videos:list_videos' 'stats' %}">Statistics</a></h2>
+{% endblock %}

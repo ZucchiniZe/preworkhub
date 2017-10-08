@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class PreworkVideo(models.Model):
     CALCULUS = 'calc'
-    STATISTICS = 'stat'
+    STATISTICS = 'stats'
     CLASS_CHOICES = (
         (CALCULUS, 'Calculus'),
         (STATISTICS, 'Statistics'),

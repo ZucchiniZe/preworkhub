@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Prework Videos for {{ subject }}{% endblock %}
+
+{% block content %}
+    <h1>{{ subject }}</h1>
+    <ul>
+        {% for video in videos %}
+            <li><a href="{% url 'videos:show_video' subject video.slug %}">{{ video.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

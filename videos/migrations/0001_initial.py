@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
                 ('created', models.DateField(auto_now_add=True, verbose_name='Date created')),
-                ('subject', models.CharField(choices=[('calc', 'Calculus'), ('stat', 'Statistics')], max_length=4)),
+                ('subject', models.CharField(choices=[('calc', 'Calculus'), ('stats', 'Statistics')], max_length=4)),
                 ('video_link', models.CharField(max_length=100)),
                 ('class_num', models.SmallIntegerField()),
                 ('video_num', models.SmallIntegerField(default=1)),
