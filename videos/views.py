@@ -10,4 +10,4 @@ def index(request):
 
 def show_video(request, subject, slug):
     video = get_object_or_404(PreworkVideo, slug=slug)
-    return HttpResponse(f"showing {subject} video: '{video.title}'")
+    return render(request, 'videos/show_video.html', {'video': video})
