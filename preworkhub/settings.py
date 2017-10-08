@@ -31,16 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django contrib
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # personal
     'videos',
+    # third party
+    'opbeat.contrib.django',
 ]
 
 MIDDLEWARE = [
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,3 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Opbeat
+
+OPBEAT = {
+    'ORGANIZATION_ID': '38765bcc19c540e0823c00b98b4c940c',
+    'APP_ID': 'd3b7bd3ab9',
+    'SECRET_TOKEN': '03962fd4d8d182e0595c77843fc6cea4d6e8eebb',
+}
