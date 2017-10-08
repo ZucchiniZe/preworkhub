@@ -1,8 +1,10 @@
 class SubjectConverter:
     regex = 'stats|calc'
 
-    def to_python(self, value):
+    @staticmethod
+    def to_python(value):
         return value
 
-    def to_url(self, value):
+    @staticmethod
+    def to_url(value):
         return value
