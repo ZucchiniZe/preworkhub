@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Showing Video {{ video.title }}{% endblock %}
+{% block title %}{{ video.subject_verbose }}: {{ video.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ video.title }} - {{ video.subject }}</h1>
+    <h1>{{ video.title }} - {{ video.subject_verbose }}</h1>
+    <h3>Class {{ video.class_num }} video {{ video.video_num }}</h3>
     <iframe src="{{ video.embed_link }}" frameborder="0" width="767" height="480"></iframe>
 {% endblock %}

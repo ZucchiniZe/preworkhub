@@ -6,7 +6,7 @@
     <h1>{{ subject }}</h1>
     <ul>
         {% for video in videos %}
-            <li><a href="{% url 'videos:show_video' subject video.slug %}">{{ video.title }}</a></li>
+            <li><a href="{% url 'videos:show_video' video.subject video.slug %}">{{ video.title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

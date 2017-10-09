@@ -4,6 +4,6 @@
 
 {% block content %}
     <h1>Prework Videos</h1>
-    <h2><a href="{% url 'videos:list_videos' 'calc' %}">Calculus</a></h2>
-    <h2><a href="{% url 'videos:list_videos' 'stats' %}">Statistics</a></h2>
+    <h2><a href="{% url 'videos:list_videos' 'calc' %}">Calculus</a> ({{ counts.calc }} video{{ counts.calc|pluralize }})</h2>
+    <h2><a href="{% url 'videos:list_videos' 'stats' %}">Statistics</a> ({{ counts.stats }} video{{ counts.stats|pluralize }})</h2>
 {% endblock %}
