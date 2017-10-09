@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # django contrib
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -42,6 +43,10 @@ INSTALLED_APPS = [
     'videos',
     # third party
     'opbeat.contrib.django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -125,6 +131,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+######################
+# 3rd Party settings #
+######################
+
 # Opbeat
 
 OPBEAT = {
@@ -132,3 +142,14 @@ OPBEAT = {
     'APP_ID': 'd3b7bd3ab9',
     'SECRET_TOKEN': '03962fd4d8d182e0595c77843fc6cea4d6e8eebb',
 }
+
+# Django-allauth
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
