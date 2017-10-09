@@ -1,7 +1,6 @@
 import re
 from datetime import date
 from django.db import models
-from django.urls import reverse
 
 
 class PreworkVideo(models.Model):
@@ -30,7 +29,7 @@ class PreworkVideo(models.Model):
 
     @property
     def video_id(self):
-        pattern = re.compile('(0[A-Z])\w+')
+        pattern = re.compile('(0[A-Za-z0-1])\w+')
         match = pattern.search(self.video_link)
         if match:
             return match.group()
@@ -47,6 +46,7 @@ class PreworkVideo(models.Model):
     full_video_id.fget.short_description = 'Class and Video Number'
 
     def get_absolute_url(self):
+        from django.urls import reverse
         return reverse('videos:show_video', args=[self.subject, self.slug])
 
     def subject_verbose(self):
