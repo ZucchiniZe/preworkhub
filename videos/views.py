@@ -7,8 +7,8 @@ from classes.models import Subject
 def index(request):
     stats_subj = Subject.objects.get(name='stats')
     calc_subj = Subject.objects.get(name='calc')
-    stats = PreworkVideo.objects.filter(subject=stats_subj)
-    calc = PreworkVideo.objects.filter(subject=calc_subj)
+    stats = PreworkVideo.objects.filter(subject=stats_subj)[:10]
+    calc = PreworkVideo.objects.filter(subject=calc_subj)[:10]
     return render(request, 'videos/index.html', {'stats': stats, 'calc': calc})
 
 
