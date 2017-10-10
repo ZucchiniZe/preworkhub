@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='preworkvideo',
             name='unit',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.PROTECT, to='classes.Unit'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, to='classes.Unit'),
             preserve_default=False,
         ),
     ]

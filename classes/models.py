@@ -34,7 +34,7 @@ class ClassDate(models.Model):
 
 class Unit(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    name = models.TextField()
+    name = models.CharField(max_length=150, db_index=True)
 
     def __str__(self):
         return self.name
