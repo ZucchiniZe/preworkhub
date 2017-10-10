@@ -44,6 +44,8 @@ class PreworkVideo(models.Model):
         from django.urls import reverse
         return reverse('videos:show_video', args=[self.subject, self.slug])
 
+    # TODO: create previous and next methods that use the video num and day
+
     class Meta:
         ordering = ['-created']
         get_latest_by = 'created'

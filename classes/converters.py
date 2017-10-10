@@ -1,5 +1,8 @@
+from .models import Subject
+
+
 class SubjectConverter:
-    regex = 'stats|calc'
+    regex = '|'.join(map(lambda tup: tup[0], Subject.CLASS_CHOICES))
 
     @staticmethod
     def to_python(value):
