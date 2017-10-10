@@ -47,3 +47,10 @@ class PreworkVideo(models.Model):
     class Meta:
         ordering = ['-created']
         get_latest_by = 'created'
+
+
+class VideoMetadata(models.Model):
+    student = models.ForeignKey('classes.Student', on_delete=models.CASCADE)
+    video = models.ForeignKey(PreworkVideo, on_delete=models.CASCADE)
+    got_it = models.BooleanField(default=False)
+    watched = models.BooleanField(default=False)
