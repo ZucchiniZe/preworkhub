@@ -6,6 +6,22 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def create_subjects(apps, schema_editor):
+    Subject = apps.get_model('classes', 'Subject')
+    db_alias = schema_editor.connection.alias
+    Subject.objects.using(db_alias).bulk_create([
+        Subject(name='stats', grade=12),
+        Subject(name='calc', grade=12)
+    ])
+
+
+def delete_subjects(apps, schema_editor):
+    Subject = apps.get_model('classes', 'Subject')
+    db_alias = schema_editor.connection.alias
+    Subject.objects.using(db_alias).filter(name='stats').delete()
+    Subject.objects.using(db_alias).filter(name='calc').delete()
+
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -58,4 +74,5 @@ class Migration(migrations.Migration):
             name='day',
             field=models.IntegerField(db_index=True),
         ),
+        migrations.RunPython(create_subjects, delete_subjects)
     ]
