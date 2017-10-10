@@ -15,7 +15,7 @@
             <div class="section">
                 <ul>
                     {% for video in calc %}
-                        <li><a href="{% url 'videos:show_video' video.subject video.slug %}">{{ video.title }}</a> Class {{ video.class_num }} video {{ video.video_num }}</li>
+                        <li><a href="{% url 'videos:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
                     {% endfor %}
                 </ul>
             </div>
@@ -28,7 +28,7 @@
             <div class="section">
                 <ul>
                     {% for video in stats %}
-                        <li><a href="{% url 'videos:show_video' video.subject video.slug %}">{{ video.title }}</a> Class {{ video.class_num }} video {{ video.video_num }}</li>
+                        <li><a href="{% url 'videos:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
                     {% endfor %}
                 </ul>
             </div>

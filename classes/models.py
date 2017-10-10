@@ -12,7 +12,7 @@ class Subject(models.Model):
         (STATISTICS, 'Statistics'),
     )
 
-    name = models.CharField(db_index=True, max_length=5, choices=CLASS_CHOICES)
+    name = models.CharField(db_index=True, max_length=5, unique=True, choices=CLASS_CHOICES)
     grade = models.IntegerField(default=12)
     announcement = models.TextField(blank=True)
 

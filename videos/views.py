@@ -1,20 +1,20 @@
 from django.shortcuts import get_object_or_404, render
 
 from .models import PreworkVideo
+from classes.models import Subject
 
 
 def index(request):
-    stats = PreworkVideo.objects.filter(subject='stats')
-    calc = PreworkVideo.objects.filter(subject='calc')
+    stats_subj = Subject.objects.get(name='stats')
+    calc_subj = Subject.objects.get(name='calc')
+    stats = PreworkVideo.objects.filter(subject=stats_subj)
+    calc = PreworkVideo.objects.filter(subject=calc_subj)
     return render(request, 'videos/index.html', {'stats': stats, 'calc': calc})
 
 
 def list_videos(request, subject):
-    videos = PreworkVideo.objects.filter(subject=subject)
-    if len(videos) > 0:
-        subj = videos[0].subject_verbose()
-    else:
-        subj = subject
+    subj = Subject.objects.get(name=subject)
+    videos = PreworkVideo.objects.filter(subject=subj)
     return render(request, 'videos/list_videos.html', {'videos': videos, 'subject': subj})
 
 

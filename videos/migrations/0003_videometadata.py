@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('classes', '0002_auto_20171010_0018'),
+        ('classes', '0001_initial'),
         ('videos', '0002_add_more_foreignkeys'),
     ]
 
