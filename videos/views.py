@@ -4,9 +4,9 @@ from .models import PreworkVideo
 
 
 def index(request):
-    counts = {'stats': PreworkVideo.objects.filter(subject='stats').count(),
-              'calc': PreworkVideo.objects.filter(subject='calc').count()}
-    return render(request, 'videos/index.html', {'counts': counts})
+    stats = PreworkVideo.objects.filter(subject='stats')
+    calc = PreworkVideo.objects.filter(subject='calc')
+    return render(request, 'videos/index.html', {'stats': stats, 'calc': calc})
 
 
 def list_videos(request, subject):
