@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # personal
+    'classes',
     'videos',
     # third party
     'opbeat.contrib.django',
@@ -139,7 +140,7 @@ STATICFILES_DIRS = [
 # 3rd Party settings #
 ######################
 
-# Opbeat
+## Opbeat
 
 OPBEAT = {
     'ORGANIZATION_ID': '38765bcc19c540e0823c00b98b4c940c',
@@ -147,7 +148,7 @@ OPBEAT = {
     'SECRET_TOKEN': '03962fd4d8d182e0595c77843fc6cea4d6e8eebb',
 }
 
-# Django-allauth
+## Django-allauth
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin
