@@ -8,6 +8,7 @@ class PreworkVideo(models.Model):
     created = models.DateField('Date created', default=date.today)
     # subject = models.CharField(db_index=True, max_length=5, choices=CLASS_CHOICES)
     subject = models.ForeignKey('classes.Subject', db_index=False, on_delete=models.PROTECT)
+    unit = models.ForeignKey('classes.Unit', on_delete=models.PROTECT)
     video_link = models.CharField(max_length=100)
 
     # These are SmallIntegerFields because we aren't going to be having class numbers above 32767

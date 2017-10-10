@@ -32,6 +32,14 @@ class ClassDate(models.Model):
         return f'{self.subject} day {self.day}'
 
 
+class Unit(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    name = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     enrolled_subjects = models.ForeignKey(Subject, on_delete=models.CASCADE)
