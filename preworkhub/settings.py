@@ -49,10 +49,14 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    # third party dev tools
+    'debug_toolbar',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
     'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -162,3 +166,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
+## Django debug toolbar
+
+INTERNAL_IPS = ['127.0.0.1']

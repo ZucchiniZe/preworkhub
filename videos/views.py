@@ -7,14 +7,14 @@ from classes.models import Subject
 def index(request):
     stats_subj = Subject.objects.get(name='stats')
     calc_subj = Subject.objects.get(name='calc')
-    stats = PreworkVideo.objects.filter(subject=stats_subj)[:10]
-    calc = PreworkVideo.objects.filter(subject=calc_subj)[:10]
+    stats = PreworkVideo.objects.select_related('subject', 'class_date').filter(subject=stats_subj)[:10]
+    calc = PreworkVideo.objects.select_related('subject', 'class_date').filter(subject=calc_subj)[:10]
     return render(request, 'videos/index.html', {'stats': stats, 'calc': calc})
 
 
 def list_videos(request, subject):
     subj = Subject.objects.get(name=subject)
-    videos = PreworkVideo.objects.filter(subject=subj)
+    videos = PreworkVideo.objects.select_related('subject', 'class_date').filter(subject=subj)
     return render(request, 'videos/list_videos.html', {'videos': videos, 'subject': subj})
 
 
