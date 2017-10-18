@@ -5,7 +5,7 @@ from . import views
 
 register_converter(converters.SubjectConverter, 'subj')
 
-app_name = 'videos'
+app_name = 'prework'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<subj:subject>/', views.list_videos, name='list_videos'),

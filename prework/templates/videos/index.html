@@ -15,10 +15,10 @@
             <div class="section">
                 <ul>
                     {% for video in calc %}
-                        <li><a href="{% url 'videos:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
+                        <li><a href="{% url 'prework:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
                     {% endfor %}
                 </ul>
-                <p><a href="{% url 'videos:list_videos' 'calc' %}">View All</a></p>
+                <p><a href="{% url 'prework:list_videos' 'calc' %}">View All</a></p>
             </div>
         </div>
         <div class="card">
@@ -29,10 +29,10 @@
             <div class="section">
                 <ul>
                     {% for video in stats %}
-                        <li><a href="{% url 'videos:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
+                        <li><a href="{% url 'prework:show_video' video.subject.name video.slug %}">{{ video.title }}</a> Class {{ video.class_date.day }} video {{ video.video_num }}</li>
                     {% endfor %}
                 </ul>
-                <p><a href="{% url 'videos:list_videos' 'stats' %}">View All</a></p>
+                <p><a href="{% url 'prework:list_videos' 'stats' %}">View All</a></p>
             </div>
         </div>
     </div>

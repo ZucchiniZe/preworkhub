@@ -3,7 +3,7 @@ from datetime import date
 from django.db import models
 
 
-class PreworkVideo(models.Model):
+class Video(models.Model):
     title = models.CharField(max_length=100)
     created = models.DateField('Date created', default=date.today)
     # subject = models.CharField(db_index=True, max_length=5, choices=CLASS_CHOICES)
@@ -43,7 +43,7 @@ class PreworkVideo(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('videos:show_video', args=[self.subject, self.slug])
+        return reverse('prework:show_video', args=[self.subject, self.slug])
 
     # TODO: create previous and next methods that use the video num and day
 
@@ -54,6 +54,6 @@ class PreworkVideo(models.Model):
 
 class VideoMetadata(models.Model):
     student = models.ForeignKey('classes.Student', on_delete=models.CASCADE)
-    video = models.ForeignKey(PreworkVideo, on_delete=models.CASCADE)
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
     got_it = models.BooleanField(default=False)
     watched = models.BooleanField(default=False)

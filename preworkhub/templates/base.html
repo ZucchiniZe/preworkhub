@@ -12,9 +12,9 @@
 </head>
 <body>
 <header class="sticky">
-    <a href="{% url 'videos:index' %}" class="logo">Prework</a>
-    <a href="{% url 'videos:list_videos' 'calc' %}" class="button">Calculus</a>
-    <a href="{% url 'videos:list_videos' 'stats' %}" class="button">Statistics</a>
+    <a href="{% url 'prework:index' %}" class="logo">Prework</a>
+    <a href="{% url 'prework:list_videos' 'calc' %}" class="button">Calculus</a>
+    <a href="{% url 'prework:list_videos' 'stats' %}" class="button">Statistics</a>
 </header>
 <div class="container">
     {% block content %}{% endblock %}

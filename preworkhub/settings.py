@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # personal
     'classes',
-    'videos',
+    'prework',
     # third party
     'opbeat.contrib.django',
     'allauth',
