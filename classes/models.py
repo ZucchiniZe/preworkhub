@@ -29,7 +29,7 @@ class ClassDate(models.Model):
     date = models.DateField(default=date.today)
 
     def __str__(self):
-        return f'{self.subject} day {self.day}'
+        return f'Day {self.day}, {self.subject} [{self.videos.first().title}]'
 
     class Meta:
         ordering = ['-date']

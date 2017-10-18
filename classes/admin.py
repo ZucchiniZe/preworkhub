@@ -23,6 +23,9 @@ class VideoInline(admin.StackedInline):
 
 
 class ClassDateAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'day', 'date')
+    list_filter = ('subject',)
+    search_fields = ['video__title']
     inlines = (VideoInline,)
 
 

@@ -7,13 +7,13 @@ class Video(models.Model):
     title = models.CharField(max_length=100)
     created = models.DateField('Date created', default=date.today)
     # subject = models.CharField(db_index=True, max_length=5, choices=CLASS_CHOICES)
-    subject = models.ForeignKey('classes.Subject', db_index=False, on_delete=models.PROTECT)
-    unit = models.ForeignKey('classes.Unit', on_delete=models.PROTECT)
+    subject = models.ForeignKey('classes.Subject', db_index=False, on_delete=models.PROTECT, related_name='videos')
+    unit = models.ForeignKey('classes.Unit', on_delete=models.PROTECT, related_name='videos')
     video_link = models.CharField(max_length=100)
 
     # These are SmallIntegerFields because we aren't going to be having class numbers above 32767
     # class_num = models.SmallIntegerField()
-    class_date = models.ForeignKey('classes.ClassDate', on_delete=models.PROTECT)
+    class_date = models.ForeignKey('classes.ClassDate', on_delete=models.PROTECT, related_name='videos')
     video_num = models.SmallIntegerField(default=1)
 
     slug = models.SlugField('URL', unique=True)
