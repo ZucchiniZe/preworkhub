@@ -6,6 +6,37 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def create_default_subjects(apps, schema_editor):
+    Subject = apps.get_model('classes', 'Subject')
+    db_alias = schema_editor.connection.alias
+    Subject.objects.using(db_alias).bulk_create([
+        Subject(name='stats', grade=12),
+        Subject(name='calc', grade=12)
+    ])
+
+
+def create_default_unit(apps, schema_editor):
+    Unit = apps.get_model('classes', 'Unit')
+    Subject = apps.get_model('classes', 'Subject')
+    db_alias = schema_editor.connection.alias
+    subj = Subject.objects.get(id=1)
+    unit = Unit(name='default unit', subject=subj)
+    unit.save(using=db_alias)
+
+
+def delete_default_subjects(apps, schema_editor):
+    Subject = apps.get_model('classes', 'Subject')
+    db_alias = schema_editor.connection.alias
+    Subject.objects.using(db_alias).filter(name='stats').delete()
+    Subject.objects.using(db_alias).filter(name='calc').delete()
+
+
+def delete_default_unit(apps, schema_editor):
+    Unit = apps.get_model('classes', 'Unit')
+    db_alias = schema_editor.connection.alias
+    Unit.objects.using(db_alias).filter(name='default unit').delete()
+
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -67,4 +98,6 @@ class Migration(migrations.Migration):
             name='subject',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='classes.Subject'),
         ),
+        migrations.RunPython(create_default_subjects, delete_default_subjects),
+        migrations.RunPython(create_default_unit, delete_default_unit),
     ]
