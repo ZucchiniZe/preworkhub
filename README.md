@@ -22,6 +22,8 @@
 
 ## Notes
 
+#### Video iframe
+
 All the videos are recoreded with the same aspect ratio and are uploaded to google drive so we can easily embed the
 videos in the current page using the following code:
 
@@ -30,9 +32,21 @@ videos in the current page using the following code:
 Note the width and height in the URL. A width of 770 and height of 480 makes the video be perfectly stretched to fill
 the iframe.
 
+#### Video metadata
+
+To get the metadata of the video one would have to send a separate request to the google drive api which would be quite
+complicated. specifically request the `videoMediaMetadata` field to actually get the duration.
+Probably going to have to be in a separate job queue even though that seems a bit over board. 
+
 ## Todo list
 - [ ] create previous and next methods on the video model that use the video num and class date to figure shit out
 - [ ] after the video gets saved, find the duration of the video and save it as well
+- [ ] add the markdownification of all of the `TextField`s.
+- [ ] add handouts stuff to the prework app
+- [ ] deployment
+  - [ ] figure out static files
+  - [ ] setup environment variable config
+  - [ ] figure out what it will cost
 - [ ] frontend work
   - [ ] make it usable
   - [ ] make it pretty
