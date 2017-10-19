@@ -37,16 +37,3 @@ the iframe.
 To get the metadata of the video one would have to send a separate request to the google drive api which would be quite
 complicated. specifically request the `videoMediaMetadata` field to actually get the duration.
 Probably going to have to be in a separate job queue even though that seems a bit over board. 
-
-## Todo list
-- [ ] create previous and next methods on the video model that use the video num and class date to figure shit out
-- [ ] after the video gets saved, find the duration of the video and save it as well
-- [ ] add the markdownification of all of the `TextField`s.
-- [ ] add handouts stuff to the prework app
-- [ ] deployment
-  - [ ] figure out static files
-  - [ ] setup environment variable config
-  - [ ] figure out what it will cost
-- [ ] frontend work
-  - [ ] make it usable
-  - [ ] make it pretty
