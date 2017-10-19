@@ -24,9 +24,9 @@ class Migration(migrations.Migration):
                 ('video_num', models.SmallIntegerField(default=1)),
                 ('slug', models.SlugField(unique=True, verbose_name='URL')),
                 ('notes', models.TextField(blank=True)),
-                ('class_date', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='classes.ClassDate')),
-                ('subject', models.ForeignKey(db_index=False, on_delete=django.db.models.deletion.PROTECT, to='classes.Subject')),
-                ('unit', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='classes.Unit')),
+                ('class_date', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='videos', to='classes.ClassDate')),
+                ('subject', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='videos', to='classes.Subject')),
+                ('unit', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='videos', to='classes.Unit')),
             ],
             options={
                 'ordering': ['-created'],

@@ -20,12 +20,14 @@ class VideoInline(admin.StackedInline):
     model = Video
     ordering = ('video_num',)
     extra = 1
+    prepopulated_fields = {'slug': ('title',)}
+    fields = ('title', 'video_link', 'created', 'subject', 'unit', ('class_date', 'video_num'), 'slug', 'notes')
 
 
 class ClassDateAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'day', 'date')
+    list_display = ('__str__', 'date')
     list_filter = ('subject',)
-    search_fields = ['video__title']
+    search_fields = ['videos__title']
     inlines = (VideoInline,)
 
 

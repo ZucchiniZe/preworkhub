@@ -52,10 +52,13 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('day', models.IntegerField(db_index=True)),
                 ('date', models.DateField(default=datetime.date.today)),
+                ('after_class', models.TextField(blank=True)),
             ],
             options={
                 'ordering': ['-date'],
                 'get_latest_by': 'date',
+                'verbose_name': 'class',
+                'verbose_name_plural': 'classes'
             },
         ),
         migrations.CreateModel(
@@ -81,6 +84,8 @@ class Migration(migrations.Migration):
                 ('performance_task_date', models.DateField(default=datetime.date.today)),
                 ('number', models.IntegerField(default=1)),
                 ('subject', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='classes.Subject')),
+                ('extra_info', models.TextField(blank=True)),
+                ('start_date', models.DateField(default=datetime.date.today)),
             ],
         ),
         migrations.AddField(

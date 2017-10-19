@@ -29,3 +29,10 @@ videos in the current page using the following code:
 
 Note the width and height in the URL. A width of 770 and height of 480 makes the video be perfectly stretched to fill
 the iframe.
+
+## Todo list
+- [ ] create previous and next methods on the video model that use the video num and class date to figure shit out
+- [ ] after the video gets saved, find the duration of the video and save it as well
+- [ ] frontend work
+  - [ ] make it usable
+  - [ ] make it pretty

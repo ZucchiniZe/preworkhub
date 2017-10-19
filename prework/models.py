@@ -4,15 +4,16 @@ from django.db import models
 
 
 class Video(models.Model):
+    """
+    The Video class is where the majority of the work is happening, storing the title, a link to the google drive file,
+    storing a connection between the class date, subject and unit.
+    """
     title = models.CharField(max_length=100)
     created = models.DateField('Date created', default=date.today)
-    # subject = models.CharField(db_index=True, max_length=5, choices=CLASS_CHOICES)
-    subject = models.ForeignKey('classes.Subject', db_index=False, on_delete=models.PROTECT, related_name='videos')
+    subject = models.ForeignKey('classes.Subject', on_delete=models.PROTECT, related_name='videos')
     unit = models.ForeignKey('classes.Unit', on_delete=models.PROTECT, related_name='videos')
     video_link = models.CharField(max_length=100)
 
-    # These are SmallIntegerFields because we aren't going to be having class numbers above 32767
-    # class_num = models.SmallIntegerField()
     class_date = models.ForeignKey('classes.ClassDate', on_delete=models.PROTECT, related_name='videos')
     video_num = models.SmallIntegerField(default=1)
 
@@ -45,14 +46,15 @@ class Video(models.Model):
         from django.urls import reverse
         return reverse('prework:show_video', args=[self.subject, self.slug])
 
-    # TODO: create previous and next methods that use the video num and day
-
     class Meta:
         ordering = ['-created']
         get_latest_by = 'created'
 
 
 class VideoMetadata(models.Model):
+    """
+    Should be created every time a user (read student) watches a video and confirms that they have indeed, "got it"
+    """
     student = models.ForeignKey('classes.Student', on_delete=models.CASCADE)
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
     got_it = models.BooleanField(default=False)

@@ -15,7 +15,7 @@ def index(request):
 def list_videos(request, subject):
     subj = Subject.objects.get(name=subject)
     videos = Video.objects.select_related('subject', 'class_date').filter(subject=subj)
-    return render(request, 'videos/list_videos.html', {'prework': videos, 'subject': subj})
+    return render(request, 'videos/list_videos.html', {'videos': videos, 'subject': subj})
 
 
 def show_video(request, subject, slug):
