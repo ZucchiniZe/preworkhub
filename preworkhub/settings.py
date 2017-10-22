@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -27,7 +27,6 @@ SECRET_KEY = 'rpl6m7=bb*bcwzok^*4os49g_ady%b$kz6a@f9m2)s$vu5i7)x'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'prework',
     # third party
     'opbeat.contrib.django',
+    'raven.contrib.django.raven_compat',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -87,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'preworkhub.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -101,7 +100,6 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -121,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -134,7 +131,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -154,6 +150,15 @@ OPBEAT = {
     'ORGANIZATION_ID': '38765bcc19c540e0823c00b98b4c940c',
     'APP_ID': 'd3b7bd3ab9',
     'SECRET_TOKEN': '03962fd4d8d182e0595c77843fc6cea4d6e8eebb',
+}
+
+## Raven
+
+RAVEN_CONFIG = {
+    'dsn': 'https://0a82309cca40452997e5992cecb00161:64099078d15c473abb42759d9bb75408@sentry.io/233635',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
 }
 
 ## Django-allauth
